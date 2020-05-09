@@ -91,6 +91,20 @@ const Mutation = new GraphQLObjectType({
                 return author.save();
             }
         },
+        editAuthor: {
+            type: AuthorType,
+            args: {
+                id: {type: GraphQLID},
+                name: {type: GraphQLString},
+                age: {type: GraphQLInt},
+            },
+            resolve(parent, args){
+                return Author.findByIdAndUpdate(args.id, {
+                    name: args.name,
+                    age: args.age
+                });
+            }
+        },
         addBook: {
             type: BookType,
             args: {
@@ -121,3 +135,4 @@ module.exports = new GraphQLSchema({
     query: RootQuery,
     mutation: Mutation
 });
+  

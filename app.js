@@ -10,7 +10,8 @@ app.use(cors());
 mongoose.connect(`mongodb+srv://vlad:qwertydb@graphql-ufv58.mongodb.net/test?retryWrites=true&w=majority`,
 { 
     useNewUrlParser: true, 
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useFindAndModify: false  
 })
  .then(() => console.log('Connected to MongoDB Atlas'))
  .catch(err => console.log('Error: ', err.message));
